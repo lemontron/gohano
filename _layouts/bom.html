@@ -1,0 +1,120 @@
+---
+layout: default
+---
+
+{%- include printer-context.liquid -%}
+{%- assign slug = page.url | split: '/' | last -%}
+{%- assign item = site.data.library[slug] -%}
+
+<div class="post bom-page">
+    <div class="bom-header">
+        <div>
+            <img class="bom-page-image" src="/assets/bom/{{slug}}.png" alt="{{page.title}}">
+        </div>
+        <div class="bom-page-top">
+            <h1>{{page.title | escape}}</h1>
+            <h2>{{item.title}}</h2>
+            <div class="bom-badges">
+                {% if item.new %}
+                <span class="badge new"
+                      title="New badge refers to parts that were not present in the original JourneyMaker 3d printer.">New</span>
+                {% endif %}
+                <span class="badge qty">×{{page.qty}}</span>
+                <span class="badge">${{item.price | multiply: page.qty}}</span>
+            </div>
+        </div>
+    </div>
+
+    <article class="bom-page-article">
+        <div>{{content}}</div>
+
+        {% if item.md %}
+        <div>
+            <h2>Product Details</h2>
+            {{item.md | markdownify}}
+        </div>
+        {% endif %}
+
+        {%if item.dimensions %}
+        <div class="dimensions-table">
+            <table>
+                <tr>
+                    <th>Dimension</th>
+                    <th class="numeric">Measurement</th>
+                </tr>
+                {% for data in item.dimensions %}
+                <tr>
+                    <td>{{data[0]}}</td>
+                    <td class="numeric">{{data[1]}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        {% endif %}
+
+        {% if page.uses %}
+        <h2>Locations in {{printer.name}}</h2>
+        <div class="dimensions-table">
+            <table>
+                <tr>
+                    <th class="small">Qty</th>
+                    <th>Location</th>
+                </tr>
+                {% for use in page.uses %}
+                <tr>
+                    <td class="small">{{use.qty | default: 1}}x</td>
+                    <td>
+                        {{use.location}}
+                        <div class="meta">{{use.note | markdownify}}</div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        {% endif %}
+
+        <!--    <p class="post-meta">-->
+        <!--        <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">-->
+        <!--            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}-->
+        <!--            {{ page.date | date: date_format }}-->
+        <!--        </time>-->
+        <!--    </p>-->
+
+        {% if item.resources %}
+        <section>
+            <h3>Resources</h3>
+            <ul class="bom-vendors">
+                {% for link in item.resources %}
+                <li>
+                    {% include button.liquid title=link.title icon="link" link=link.url target="_blank" %}
+                    <span class="button-notes">{{link.note}}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+
+        <section>
+            <ul class="bom-links">
+                {% for link in item.links %}
+                <li class="bom-brand">
+                    {% if item.links[1] %}
+                    <div class="bom-brand-left">
+                        <h4>{{link.product}}</h4>
+                        <div class="meta">{{link.note}}</div>
+                    </div>
+                    {% endif %}
+                    <div class="bom-brand-right">
+                        {% for link in link.links %}
+                        <a href="{{link.url}}" target="_blank" class="bom-brand-buy">
+                            <i class="material-icons">shopping_cart</i>
+                            {{link.vendor}}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </article>
+</div>
