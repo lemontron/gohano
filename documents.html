@@ -1,10 +1,28 @@
 ---
 title: Documents
-layout: document
 ---
+
+<style>
+    * {box-sizing: border-box;}
+    body,html {padding:0; margin:0; height:100%;}
+    body {font-family:system-ui, sans-serif; margin:0 auto; max-width:840px;}
+    a {color:inherit;}
+    article {page-break-after:always;}
+    .title {font-family:"Bad Script", sans-serif; text-align:center;}
+</style>
+
+<article>
+    <h1 class="title">Gohano</h1>
+    <ol>
+        {% for document in site.documents %}
+        <li><a href="{{document.slug}}">{{document.title}}</a></li>
+        {% endfor %}
+    </ol>
+</article>
 
 {% for document in site.documents %}
 <article>
+    <h1 class="title">Gohano</h1>
     <h1>{{document.title}}</h1>
     {{document.content}}
 </article>

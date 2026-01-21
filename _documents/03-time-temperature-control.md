@@ -1,5 +1,5 @@
 ---
-title: Time & Temperature Control for Safety
+title: Time & Temperature Control
 layout: page
 ---
 
