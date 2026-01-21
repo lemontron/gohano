@@ -1,0 +1,11 @@
+---
+title: Documents
+layout: document
+---
+
+{% for document in site.documents %}
+<article>
+    <h1>{{document.title}}</h1>
+    {{document.content}}
+</article>
+{% endfor %}

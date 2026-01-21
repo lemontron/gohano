@@ -9,6 +9,8 @@
 }
 @media print {
     :root {--color:#000; --bg:#fff; --link:#00f;}
+
+    article { break-after:page; }
 }
 @media (max-width:640px) {
     :root {--gap:8px;}
@@ -205,7 +207,7 @@ tr > *:last-child {padding-right:0;}
 .post-content .wave {margin:20px 0;}
 .post-content iframe {max-width:100%;}
 
-pre.highlight {background:#110; color:#ffff1f; border-radius:10px; border:1px solid rgba(255,255,255,.05); font-size:11px;}
+pre.highlight {background:#110; color:#ffff1f; border-radius:10px; border:1px solid rgba(255, 255, 255, .05); font-size:11px;}
 
 /* GUIDES PAGE LAYOUT */
 .sidebar {overflow:auto; font-size:16px; font-family:var(--header-font), sans-serif; white-space:nowrap; padding:10px var(--gutter); -webkit-overflow-scrolling:touch;}
@@ -297,7 +299,7 @@ a.tag-image:hover {text-decoration:none;}
 .bom-item {display:flex; flex-direction:column;}
 .bom-item:hover {text-decoration:none !important;}
 .bom-body {padding-top:5px; display:flex; justify-content:space-between; gap:5px;}
-.meta {color:rgba(255,255,255,.6); font-size:11px;}
+.meta {color:rgba(255, 255, 255, .6); font-size:11px;}
 
 .bom-link {text-decoration:none !important; color:#fff !important;}
 .bom-name {font-family:var(--header-font), sans-serif; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; padding-top:2px;}
@@ -348,7 +350,7 @@ a.tag-image:hover {text-decoration:none;}
 .shock-warning-center {min-width:300px;}
 
 /* HEADER */
-.nav-bar {font-family:var(--header-font), sans-serif; font-size:12px; color:#fff; padding:0 20px; display:flex; align-items:center; justify-content:center; gap:10px; height:30px; border-bottom:1px solid rgba(255,255,255,.1); background:#202;}
+.nav-bar {font-family:var(--header-font), sans-serif; font-size:12px; color:#fff; padding:0 20px; display:flex; align-items:center; justify-content:center; gap:10px; height:30px; border-bottom:1px solid rgba(255, 255, 255, .1); background:#202;}
 .nav-bar a {padding:0 8px; height:18px; border-radius:9px; display:flex;}
 .nav-bar a.active {color:#000; background:#fff;}
 
