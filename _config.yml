@@ -5,3 +5,7 @@ description: >-
 baseurl: ""
 url: ""
 theme: minima
+collections:
+  documents:
+    output: true
+    permalink: /documents/:path/
